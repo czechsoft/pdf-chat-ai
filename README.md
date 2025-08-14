@@ -34,7 +34,7 @@ pdfchatai:
   chromaDB:
     baseUrl: "http://localhost:8000"
   chatModel:
-    baseUrl: "http://20.185.83.16:8080/" #ollama address
+    baseUrl: "http://localhost:8080/" #ollama address
     apiKey: "<API-KEY>" #ollama api key
     modelName: "gemma2" # language model name installed in ollama
     temperature: 0.0

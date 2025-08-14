@@ -2,9 +2,10 @@ pdfchatai:
   chromaDB:
     baseUrl: "http://localhost:8000"
   chatModel:
-    baseUrl: "http://20.185.83.16:8080/"
+    baseUrl: "http://localhost:8080/"
     apiKey: "<API-KEY>"
     modelName: "gemma2"
     temperature: 0.0
-    timeout: 3600 #in seconds
+    timeout:
+      3600 #in seconds
   pdfDataFile: "C:\\projects\\AI\\cassandra.pdf"
