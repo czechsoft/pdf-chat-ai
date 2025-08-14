@@ -16,7 +16,13 @@ import java.util.Map;
 import static java.time.Duration.ofSeconds;
 
 @Configuration
-public class AppConfig {
+public class BeanConfiguration {
+
+    private final PdfChatAiConfig  pdfChatAiConfig;
+
+    public BeanConfiguration(PdfChatAiConfig pdfChatAiConfig) {
+        this.pdfChatAiConfig = pdfChatAiConfig;
+    }
 
     @Bean
     public EmbeddingModel embeddingModel() {
@@ -26,7 +32,7 @@ public class AppConfig {
     @Bean
     public ChromaEmbeddingStore  chromaEmbeddingStore() {
         return ChromaEmbeddingStore.builder()
-                .baseUrl("http://localhost:8000")
+                .baseUrl(pdfChatAiConfig.chromaDB().baseUrl())
                 .collectionName(""+System.currentTimeMillis())
                 .build();
     }
@@ -44,11 +50,11 @@ public class AppConfig {
     public ConversationalRetrievalChain conversationalRetrievalChain() {
         return ConversationalRetrievalChain.builder()
                 .chatModel(OllamaChatModel.builder()
-                        .customHeaders(Map.of("Authorization", "Bearer " + "aie93JaTv1GW1AP4IIUSqeecV22HgpcQ6WlgWNyfx2HflkY5hTw19JDbT90ViKcZaZ6lpjOo3YIGgpkG7Zb8jEKvdM5Ymnq9jPm79osLppCebwJ7WdWTwWq3Rf15NDxm"))
-                        .baseUrl("http://20.185.83.16:8080/")
-                        .temperature(0.0d)
-                        .modelName("gemma2")
-                        .timeout(ofSeconds(3600))
+                        .customHeaders(Map.of("Authorization", "Bearer " + pdfChatAiConfig.chatModel().apiKey()))
+                        .baseUrl(pdfChatAiConfig.chatModel().baseUrl())
+                        .temperature(pdfChatAiConfig.chatModel().temperature())
+                        .modelName(pdfChatAiConfig.chatModel().modelName())
+                        .timeout(ofSeconds(pdfChatAiConfig.chatModel().timeout()))
                         .build())
                 .contentRetriever(EmbeddingStoreContentRetriever.builder()
                         .embeddingModel(embeddingModel())

@@ -4,21 +4,6 @@ spring:
   shell:
     interactive:
       enabled: true
-#  ai:
-#    vectorstore:
-#      simple:
-#        store:
-#          path: ./vectorstore.json
-#
-#    ollama:
-#      base-url: http://20.185.83.16:8080/
-#      api-key: aie93JaTv1GW1AP4IIUSqeecV22HgpcQ6WlgWNyfx2HflkY5hTw19JDbT90ViKcZaZ6lpjOo3YIGgpkG7Zb8jEKvdM5Ymnq9jPm79osLppCebwJ7WdWTwWq3Rf15NDxm
-#      chat:
-#        model: gemma2
-#      chroma:
-#        client:
-#          key-token: ck-7StXwUho1apG7HYxNXgKky5UJByoLHo2VPpYFSo1yvXc
-#          host: https://api.trychroma.com
-#          port: 443
-#        tenant-name: 5f041b53-543b-4706-bde9-4dcc02670158
-#        database-name: doc_db
+  config:
+    import:
+      - pdfchatai.yml

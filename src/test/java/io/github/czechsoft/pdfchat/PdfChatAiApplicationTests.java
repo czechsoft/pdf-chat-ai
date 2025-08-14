@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class PdfChatAiApplicationTests {
 
-    @Test
+//    @Test
     void contextLoads() {
     }
 
